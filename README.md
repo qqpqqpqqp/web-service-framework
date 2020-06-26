@@ -3,9 +3,13 @@
 ```bash
 # install dependencies
 $ yarn install
+or
+$ npm install
 
 # DEV環境のファイルを利用する場合
 $ yarn run dev
+or
+$ npm run dev
 
 #STG環境のファイルを利用する場合
 #$ yarn run stg
@@ -17,37 +21,36 @@ $ yarn run dev
 
 ```sh
 $ yarn add {$パッケージ名}
+or
+$ npm install {$パッケージ名} 
 ```
 
 ### Sassの環境構築
 
 ```sh
 $ yarn add sass-loader node-sass
+or
+$ npm install sass-loader node-sass
 ```
 
 ### pugの環境構築
 
 ```sh
 $ yarn add -D pug pug-loader
+or
+$ npm install pug pug-loader
 ```
 
 ### html圧縮の環境構築
 
 ```sh
-$  yarn add @nuxtjs/html-minifier
-```
-nuxt.config.js
-```sh
-{
-  modules: [
-    ['@nuxtjs/html-minifier', { log: 'once', logHtml: true }]
- ]
-}
+$ yarn add @nuxtjs/html-minifier
+or
+$ npm install @nuxtjs/html-minifier
 ```
 
 
-
-
+## 不足パッケージの(オプション)
 
 ### GraphQLの環境構築
 
