@@ -193,4 +193,7 @@ $basicRadius:4;
 	&_orange{
 		@include buttonSkin($bg:#EDA03A);
 	}
+	&_blue{
+		@include buttonSkin($bg:#0747A6);
+	}
 }

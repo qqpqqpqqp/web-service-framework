@@ -16,21 +16,39 @@
           section.l-section
             h3.c-contentsHL 本プロジェクトのダウンロード
             .l-container
-              a.c-regularButton.c-button_disabled ダウンロード
+              a.c-regularButton.c-button_blue(href="https://bitbucket.org/tech_videomarket/web-service-framework/src/master/" target="_blank" rel="noopener") Open Bitbuket
           section.l-section
             h3.c-contentsHL セットアップ
             .l-container readme.md を参照
-          section.l-section
-            h3.c-contentsHL おすすめのパッケージ(任意)
-            ul.c-lists.l-container
-              li.c-lists__text.l-column.l-column_nowrap
-                  .w200
-                    a(href="https://qiita.com/takanorip/items/d1e8618800d951780f4b" target="_blank" rel="noopener") apollo
-                  .l-column__column_grow GraphQL使うなら
-              li.c-lists__text.l-column.l-column_nowrap
-                  .w200
-                    a(href="https://tecb.jp/blog/996" target="_blank" rel="noopener") vue-touch
-                  .l-column__column_grow ドロワーのスマホ対応したい場合
+        section.l-section
+          h2.c-contentsHL CSS Rule
+          .l-container
+            .l-scrollX
+              table.p-table
+                tr
+                  th ルール
+                  th 例
+                tr
+                  td 極力ネストしない
+                  td
+                    pre.c-card.pX20.pY10
+                      code //
+                tr
+                  td BEMのElementは過度に接続しない
+                  td
+                    pre.c-card.pX20.pY10
+                      code
+                        |//やっても２つまで？
+                        |//テキストリスト
+                        |&__text{
+                        |  padding-top: 8px;
+                        |  padding-bottom: 8px;
+                        |  //定義リスト
+                        |  &__headline{
+                        |    font-size: .9rem;
+                        |    color: rgba($colorMain,.7);
+                        |  }
+                        |}
 </template>
 <script>
 import Navigation from '~/components/Navigation.vue'
