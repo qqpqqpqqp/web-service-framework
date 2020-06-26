@@ -1,0 +1,327 @@
+//★★★★★★★★★★★★★★★★★★
+//Utility レイヤー ： メイン
+//★★★★★★★★★★★★★★★★★★
+
+@import "./variable/_structure";
+@import "./variable/_theme";
+
+//flex box(親)調整用
+.flex{
+    display: flex;
+}
+.flex-wrap{
+  flex-flow: row wrap; //カラム落ちあり
+}
+.flex-between{
+  justify-content: space-between !important;
+}
+.flex-around{
+  justify-content: space-around !important;
+}
+.flex-center{
+  justify-content:center !important;
+}
+.flex-right{
+  justify-content:flex-end !important;
+}
+.flex-left{
+  justify-content:flex-start !important;
+}
+.flex-middle{
+  align-items: center !important;
+}
+.flex-stretch{
+  align-items: stretch !important;
+}
+.flex-Vcenter {
+    flex-flow: row wrap;
+    align-content: center !important; //複数行用
+}
+.flex-Vbetween {
+    flex-flow: row wrap;
+    align-content: space-between !important;
+}
+.flex-Varound {
+    flex-flow: row wrap;
+    align-content: space-around !important; //複数行 均等割付
+}
+
+//flex box(子)調整用
+.flex-child-left{
+  margin-right: auto!important;
+}
+.flex-child-right{
+  margin-left: auto!important;
+}
+.flex-child-grow{
+  flex-grow: 1;//広がる or 均等
+}
+.flex-child-shrink{
+  flex-shrink: 0;//等倍サイズ
+}
+.flex-child-flex1{
+  flex: 1;//リキッド
+}
+.flex-grow-none{
+    flex-grow: 0;
+}
+//IE11ハック
+@media all and (-ms-high-contrast:none){
+  *::-ms-backdrop, .flex-child-grow {
+		flex:1 0 0%;
+  }
+}
+
+
+//文字系-------------------------
+
+// ★フォント設定
+@for $fontSize from 4 through 30 { //forで連番10〜60(半分で指定)
+  .f#{$fontSize * 2} { //偶数のみ指定
+    font-size:(#{($fontSize * 2) / $rootFont}rem !important); //rem = 設定したいsize / 基本のsize
+  }
+}
+.f5{
+  font-size: 0.357142857rem;
+}
+.f11{
+  font-size: 0.7857142857rem;
+}
+.f13{
+  font-size: 0.92857142857143rem;
+}
+.fB{
+  font-weight: bold;
+}
+.fL{
+  font-weight: lighter;
+}
+.mincho{
+  font-family: "游明朝体", "Yu Mincho", YuMincho, "heisei-mincho-std", serif !important;
+}
+.serif{
+  font-family: serif !important;
+}
+.roboto{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+
+// ★line-height設定
+.lh10{
+  line-height: 1em;
+}
+.lh13{
+  line-height: 1.3em;
+}
+.lh15{
+  line-height: 1.5em;
+}
+.lh18{
+  line-height: 1.8em;
+}
+.lh20{
+  line-height: 2em;
+}
+.lh30{
+  line-height: 3em;
+}
+
+//★テキスト・イメージ設定
+.taC{
+  text-align: center;
+}
+.taL{
+  text-align: left;
+}
+.taR{
+  text-align: right;
+}
+.taJ{
+  text-align: justify;
+}
+.tdNone {
+    text-decoration: none;
+}
+.vaM{
+  vertical-align: middle;//フォントオーサム用
+}
+.fullImg{
+  width: 100%;
+  height: auto;
+}
+
+
+//色系-------------------------
+.colorKey{
+  color: $colorTheme;
+}
+
+//余白系-------------------------
+
+// ★margin設定
+@for $marginTop from 0 through 30 { //forで連番0〜60(半分で指定)
+  .mt#{$marginTop * 2} { //2の倍数で指定
+    margin-top:(#{($marginTop * 2)}px) !important;
+  }
+}
+@for $marginBottom from 0 through 100 { //forで連番0〜100(半分で指定)
+  .mb#{$marginBottom * 2} { //2の倍数で指定
+    margin-bottom:(#{($marginBottom * 2)}px) !important;
+  }
+}
+@for $marginLeft from 0 through 30 { //forで連番0〜60(半分で指定)
+  .ml#{$marginLeft * 2} { //2の倍数で指定
+    margin-left:(#{($marginLeft * 2)}px) !important;
+  }
+}
+@for $marginRight from 0 through 30 { //forで連番0〜60(半分で指定)
+  .mr#{$marginRight * 2} { //42の倍数で指定
+    margin-right:(#{($marginRight * 2)}px) !important;
+  }
+}
+@for $marginY from 0 through 30 { //forで連番0〜60(半分で指定)
+  .mY#{$marginY * 2} { //2の倍数で指定
+    margin-top:(#{($marginY * 2)}px);
+    margin-bottom:(#{($marginY * 2)}px) !important;
+  }
+}
+@for $marginX from 0 through 30 { //forで連番0〜60(半分で指定)
+  .mX#{$marginX * 2} { //2の倍数で指定
+    margin-right:(#{($marginX * 2)}px) !important;
+    margin-left:(#{($marginX * 2)}px) !important;
+  }
+}
+@for $marginX from 0 through 30 { //forで連番0〜60(半分で指定)
+  .m#{$marginX * 2} { //2の倍数で指定
+    margin:(#{($marginX * 2)}px) !important;
+  }
+}
+
+.mX0auto{
+  margin: 0 auto;
+}
+
+// ★padding設定
+@for $paddingTop from 0 through 30 { //forで連番0〜60(半分で指定)
+  .pt#{$paddingTop * 2} { //2の倍数で指定
+    padding-top:(#{($paddingTop * 2)}px) !important;
+  }
+}
+@for $paddingBottom from 0 through 30 { //forで連番0〜60(1/4で指定)
+  .pb#{$paddingBottom * 2} { //2の倍数で指定
+    padding-bottom:(#{($paddingBottom * 2)}px) !important;
+  }
+}
+@for $paddingLeft from 0 through 30 { //forで連番0〜60(半分で指定)
+  .pl#{$paddingLeft * 2} { //2の倍数で指定
+    padding-left:(#{($paddingLeft * 2)}px) !important;
+  }
+}
+@for $paddingRight from 0 through 30 { //forで連番0〜60(1/4で指定)
+  .pr#{$paddingRight * 2} { //2の倍数で指定
+    padding-right:(#{($paddingRight * 2)}px) !important;
+  }
+}
+@for $paddingY from 0 through 30 { //forで連番0〜60(半分で指定)
+  .pY#{$paddingY * 2} { //2の倍数で指定
+    padding-top:(#{($paddingY * 2)}px);
+    padding-bottom:(#{($paddingY * 2)}px) !important;
+  }
+}
+@for $paddingX from 0 through 30 { //forで連番0〜60(半分で指定)
+  .pX#{$paddingX * 2} { //2の倍数で指定
+    padding-right:(#{($paddingX * 2)}px) !important;
+    padding-left:(#{($paddingX * 2)}px) !important;
+  }
+}
+@for $paddingX from 0 through 30 { //forで連番0〜60(半分で指定)
+  .p#{$paddingX * 2} { //2の倍数で指定
+    padding:(#{($paddingX * 2)}px) !important;
+  }
+}
+
+
+//レイアウト系-------------------------
+
+//★widthの設定
+@for $ratio from 0 through 20 {
+  .w#{$ratio * 5}p { //5の倍数で指定
+    width:unquote("#{$ratio * 5}% !important");
+  }
+}
+@for $W2 from 5 through 320 {
+  .w#{$W2 * 2} { //2の倍数で指定
+    width:unquote("#{$W2 * 2}px !important");
+  }
+}
+// @for $maxW2 from 5 through 320 {
+//   .maxW#{$maxW2 * 2} { //2の倍数で指定
+//     max-width:unquote("#{$maxW2 * 2}px !important");
+//   }
+// }
+//★heightの設定
+@for $ratio from 0 through 120 {
+  .h#{$ratio * 2} { //2の倍数で指定
+    height: unquote("#{$ratio * 2}px !important");
+  }
+}
+//★max-heightの設定
+// @for $ratio from 0 through 120 {
+//   .maxH#{$ratio * 2} { //2の倍数で指定
+//     max-height: unquote("#{$ratio * 2}px !important");
+//     width: auto !important;
+//   }
+// }
+
+//★heightの設定
+.hAuto {
+  height: auto;
+}
+
+
+
+
+// ★ボーダーの設定
+.b0{
+  border: none !important;
+}
+.b1{
+  border: 1px solid $borderColor;
+}
+
+
+//ポジション設定
+.relative{
+  position: relative;
+}
+.absolute{
+  position: absolute;
+}
+.none{
+  display: none;
+}
+
+//オーバーフロー設定
+.ofA{
+  overflow: auto;
+}
+.ofH{
+  overflow: hidden;
+}
+.ofV{
+  overflow: visible;
+}
+
+//display設定
+.disBl{
+    display: block;
+}
+
+//角丸設定
+// @for $radiusSize from 0 through 30 { //forで連番0〜30(半分で指定)
+//   .r#{$radiusSize * 2} { //偶数のみ指定
+//     border-radius: (#{$radiusSize * 2}px) !important;
+//   }
+// }

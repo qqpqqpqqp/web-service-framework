@@ -1,0 +1,196 @@
+//★★★★★★★★★★★★★★★★★★
+//Component レイヤー ： メイン
+//パーツ、モジュール群
+//★★★★★★★★★★★★★★★★★★
+
+@import "./variable/_structure";
+@import "./variable/_theme";
+
+//サイズ規格($size)：サイズ数値($height)(高さ)を指定px単位
+$buttonSize:(
+	small:(
+		height:20,
+		fontSize:14,
+		padding:4
+	),
+	regular:(
+		height:32,
+		fontSize:16,
+		padding:8
+	),
+	large:(
+		height:48,
+		fontSize:18,
+		padding:12
+	),
+	xlarge:(
+		height:54,
+		fontSize:20,
+		padding:16
+	),
+	xxlarge:(
+		height:80,
+		fontSize:26,
+		padding:24
+	)
+);
+
+
+//基本の角丸の設定(px)
+$basicRadius:4;
+
+
+// ★ボタンスタイル★★★★★★★★★★★★★★★★★★
+@mixin buttonSkin ($color:$K5, $bg:$colorTheme){
+	border: solid 1px $bg;
+	background-color: $bg;
+  color: $color;
+	&:hover{
+    color: $color;
+    background-color: saturate($bg, 10%);
+	}
+	&:active{
+		background-color: saturate($bg, 30%);
+	}
+}
+@mixin buttonUI (){
+	display: inline-block;
+	overflow: hidden;
+	font-weight: 500;
+	cursor: pointer;
+	user-select: none;
+  text-align: center;
+	box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),0px 2px 2px 0px rgba(0, 0, 0, 0.14),0px 1px 5px 0px rgba(0,0,0,.12);
+	transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover{
+		text-decoration: none;
+		opacity: 1;
+		box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),0px 4px 5px 0px rgba(0, 0, 0, 0.14),0px 1px 10px 0px rgba(0,0,0,.12);
+		transition: all 0.2s;
+	}
+}
+@mixin badgeSkin ($color:$K5, $bg:$colorTheme){
+	border: solid 1px $bg;
+	background-color: $bg;
+  color: $color;
+}
+
+@mixin badgeUI (){
+	overflow: hidden;
+	font-weight: 500;
+	display: inline-block;
+}
+
+
+
+
+
+//角丸
+@mixin buttonRadius($value,$radius:$basicRadius){
+  height: #{$value}px;
+  line-height: #{$value - 2}px;
+  border-radius: #{$radius}px;
+}
+
+//ボタンサイズを設定
+@each $size, $property in $buttonSize {
+  .c-#{$size}Button{
+		font-size: #{map-get($property, fontSize)}px;
+		padding: 0 #{map-get($property, padding)}px;
+		@include buttonSkin();
+		@include buttonUI();
+ 		@include buttonRadius(map-get($property, height));
+		& dl{
+			display: flex;
+			flex-flow: column;
+			align-items: center;
+			justify-content:center;
+			height: 100%;
+		}
+		& dt{
+			line-height: #{map-get($property, fontSize)}px;
+			margin-bottom: 0.2em;
+			font-weight: bold;
+		}
+		& dd{
+			line-height: 14px;
+			font-size: 14px;
+		}
+		& + input{
+			display: none;
+		}
+  }
+	.c-#{$size}Badge{
+		font-size: #{map-get($property, fontSize)}px;
+		padding: 0 #{map-get($property, padding)}px;
+		@include badgeSkin();
+		@include badgeUI();
+ 		@include buttonRadius(map-get($property, height));
+  }
+}
+
+
+// ★modifier ★★★★★★★★★★★★★★★★★★
+
+.c-button,.c-badge{
+	//正方形
+	&_square{
+		border-radius: 0%;
+	}
+	//円形
+	&_circle{
+		border-radius: 100px;
+	}
+}
+.c-badge{
+	&_outlined{
+		@include badgeSkin($color:$colorTheme);
+		background: none;
+	}
+	&_orange{
+		@include badgeSkin($bg:#EDA03A);
+	}
+	&_base{
+		@include badgeSkin($color:$colorMain,$bg:$colorBase);
+	}
+	&_main{
+		@include badgeSkin($color:$colorBase,$bg:$colorMain);
+	}
+}
+
+.c-button{
+	&_outlined{
+		@include buttonSkin($color:$colorTheme);
+		background: none;
+		box-shadow: none;
+		&:hover{
+			background-color: rgba($colorTheme,.1);
+			box-shadow: none;
+		}
+		&:active{
+			background-color: rgba($colorTheme,.3);
+		}
+	}
+	&_text{
+		@include buttonSkin($color:$colorTheme,$bg:rgba(0,0,0,0));
+		background: none;
+		box-shadow: none;
+		&:hover{
+			background-color: rgba($colorTheme,.1);
+			box-shadow: none;
+		}
+		&:active{
+			background-color: rgba($colorTheme,.3);
+		}
+	}
+	&_disabled{
+		@include buttonSkin($color:$K40, $bg:$K15);
+		pointer-events: none;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		cursor: default;
+	}
+	&_orange{
+		@include buttonSkin($bg:#EDA03A);
+	}
+}

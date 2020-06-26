@@ -1,0 +1,122 @@
+//★★★★★★★★★★★★★★★★★★
+//Project レイヤー
+
+//★★★★★★★★★★★★★★★★★★
+
+@import "./variable/_structure";
+@import "./variable/_theme";
+
+// ★カード★★★★★★★★★★★★★★★★★★
+.p-card{
+  &_regular{
+    width: 240px;
+  }
+  &__frame{
+    overflow: hidden;
+    position: relative;
+    height: 0;
+    &_16x9{
+      padding-top: 56.25%;
+    }
+    &_4x3{
+      padding-top: 75%;
+    }
+    &_1x1{
+      padding-top: 100%;
+    }
+    & img{
+      position: absolute;
+      height: auto;
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  &__contents{
+    padding: 8px;
+  }
+  &__headline{
+    font-weight: bold;
+  }
+  &__text{
+    font-size: 0.8rem;
+    color: rgba($colorMain,.8);
+  }
+  &__buttonArea{
+    display: flex;
+    border-top: 1px solid rgba($colorMain,.2);
+    margin: 4px 0 0 0;
+    padding: 8px;
+  }
+}
+
+
+
+// ★テーブル★★★★★★★★★★★★★★★★★★
+
+.p-table{
+  border: 1px solid $borderColor;
+  border-bottom-style: none;
+  border-right-style: none;
+  &_borderless{
+    border-style: none;
+  }
+  & dl{
+    border-right: 1px solid $borderColor;
+    border-bottom: 1px solid $borderColor;
+    & dt{
+      font-weight: 600;
+      border-bottom: 1px solid $borderColor;
+      background-color: $subColorBase;
+      @include mq(tb){
+        &[class*="-3-"]{
+          border-bottom-style: none;
+        }
+      }
+      @include mq(pc){
+        border-bottom-style: none;
+        border-right: 1px solid $borderColor;
+      }
+    }
+    & dd{
+      border-right-style: none;
+      border-bottom: 1px solid $borderColor;
+      @include mq(tb){
+        border-bottom-style: none;
+        border-right: 1px solid $borderColor;
+      }
+      @include mq(pc){
+      }
+      &:last-child{
+        border-right-style: none !important;
+        border-bottom-style: none !important;
+      }
+    }
+    & dt,& dd{
+      padding: 10px;
+    }
+  }
+}
+table.p-table{
+  border: 1px solid $borderColor;
+  &_borderless{
+    border-style: none;
+    & th,& td{
+      border-style: none !important;
+    }
+  }
+  & th{
+    font-weight: 600;
+    border-bottom: 1px solid $borderColor;
+    background-color: $subColorBase;
+    word-break: keep-all;
+  }
+  & td{
+    border-bottom: 1px solid $borderColor;
+  }
+  & th,& td{
+    border-right: 1px solid $borderColor;
+    padding: 10px;
+  }
+}

@@ -1,0 +1,246 @@
+//★★★★★★★★★★★★★★★★★★
+//Layout レイヤー ： メイン
+//コンテナーブロック
+//★★★★★★★★★★★★★★★★★★
+
+@import "./variable/_structure";
+@import "./variable/_theme";
+
+//iphone5(w320) ~ Android(w360) ~ iphone7(w375)
+//初期値
+
+// ★navigation ★★★★★★★★★★★★★★★★★★
+//関連例の高い .p-drawerは Navigation.vue に記述
+.l-contents,.l-header {
+	max-width: $siteWidth;
+	margin: 0 auto;
+	width: 100%;
+	position: relative;
+}
+.l-header{
+  min-height: $headerHeight;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	@include mq(tb){
+		flex-wrap: nowrap;
+	}
+	&__logo{
+		display: flex;
+		align-items: center;
+		margin-right: 16px;
+		height: 48px;
+		@include mq(tb){
+			display: inherit;
+		}
+		@include mq(pc){
+			display: none;
+		}
+	}
+	&__search{
+		width: 100%;
+		max-width: 360px;
+		margin-bottom: 8px;
+		@include mq(tb){
+			margin-bottom: 0;
+		}
+	}
+}
+.l-navigation{
+  background-color: $headerBg; //window全体に広げる為
+  position: fixed;
+  top: 0;
+  z-index: 5000;
+  width: 100%;
+	padding-top: 2px;
+	@include mq(pc){
+		padding-top: 0px;
+  }
+}
+.l-navigation + .l-contents{
+	margin-top: $headerHeight + 23 + 8;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	@include mq(tb){
+		margin-top: $headerHeight;
+  }
+	@include mq(pc){
+    padding-left: $drawerWidth;
+  }
+  @include mq(max){
+    padding-left: 0;
+  }
+}
+.l-navigation + .l-contents{
+  @include mq(pc){
+    padding-left: $drawerWidth;
+  }
+}
+.l-navigation > header{
+  @include mq(pc){
+    padding-left: $drawerWidth + 26px;
+  }
+}
+
+// ★wrapper ★★★★★★★★★★★★★★★★★★
+
+.l-wrap {
+	margin:0 auto;
+	min-width: 276px;
+	width: 100%;
+	max-width: $siteWidth;
+	padding: 0 8px;
+	@include mq(tb){
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+	@include mq(pc){
+    padding-left: 26px;
+    padding-right: 26px;
+  }
+	&_content{
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+}
+
+
+
+//nexus5x(w411) ~ iphone7(w414)+ ~ tablet(w600)
+@include mq(tb){
+
+}
+// ipad(w768) ~ tablet(w800) ~ tablet(h960) ~ ipadpro(w1024) or tablet(h1024) ~ tablet(h1280) ~ ipadpro(h1330)
+@include mq(pc){
+
+}
+
+// ★section★★★★★★★★★★★★★★★★★★
+.l-section {
+	padding-bottom: 40px;
+}
+
+// ★container ★★★★★★★★★★★★★★★★★★
+.l-container {
+	padding-bottom: 20px;
+	&:last-child{
+		padding: 0;
+	}
+}
+
+// ★可変不可要素レスポンシブ対応 ★★★★★★★★★★★★★★★★★★
+.l-scrollX{
+  overflow-x: scroll !important;
+  @include mq(pc){
+    -ms-overflow-style: none;    /* IE, Edge 対応 */
+    scrollbar-width: none;       /* Firefox 対応 */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+// ★column★★★★★★★★★★★★★★★★★★
+
+.l-column{
+	height: auto;
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap; //カラム落ちあり
+	overflow: hidden;
+	word-break: break-all;
+	&_nowrap{
+		flex-flow: row nowrap; //カラム落ちなし
+	}
+	&__column{
+		&_one{
+			width:100%;
+		}
+		&_two{
+			width:50%;
+		}
+		&_three{
+			width:33.333333%;
+		}
+		&_four{
+			width:25%;
+		}
+		&_five{
+			width:20%;
+		}
+		&_six{
+			width:16.666666%;
+		}
+		&_seven{
+			width:14.285714%;
+		}
+		&_eight{
+			width:12.5%;
+		}
+		&_nine{
+			width:11.111111%;
+		}
+		&_ten{
+			width:10%;
+		}
+		&_w100p{
+			width:100%;
+		}
+		&_w90p{
+			width:90%;
+		}
+		&_w80p{
+			width:80%;
+		}
+		&_w70p{
+			width:70%;
+		}
+		&_w60p{
+			width:60%;
+		}
+		&_w50p{
+			width:50%;
+		}
+		&_w40p{
+			width:40%;
+		}
+		&_w30p{
+			width:30%;
+		}
+		&_w20p{
+			width:20%;
+		}
+		&_w10p{
+			width:10%;
+		}
+		&_liquid{
+			flex: 1;
+		}
+		&_grow{
+			flex-grow: 1;//広がる or 均等
+		}
+		&_shrink{
+			flex-shrink: 0;//等倍サイズ
+		}
+	}
+}
+
+// edgeハック
+_:-ms-lang(x), _::-webkit-meter-bar,.l-column__column_three {
+	width: 33.33%
+}
+_:-ms-lang(x), _::-webkit-meter-bar,.l-column__column_six {
+	width: 16.66%
+}
+_:-ms-lang(x), _::-webkit-meter-bar,.l-column__column_seven {
+	width: 14.28%
+}
+_:-ms-lang(x), _::-webkit-meter-bar,.l-column__columc-copyrightn_nine {
+	width: 11.11%
+}
+//IE11ハック
+@media all and (-ms-high-contrast:none){
+  *::-ms-backdrop, .l-column__column_grow {
+		flex:1 0 0%;
+  }
+}

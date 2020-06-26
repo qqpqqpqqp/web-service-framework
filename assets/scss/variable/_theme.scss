@@ -1,0 +1,66 @@
+//★★★★★★★★★★★★★★★★★★
+//サイト設定
+//★★★★★★★★★★★★★★★★★★
+
+//サイトコンテンツエリアの最大幅 = レスポンシブ設定 > max
+$siteWidth :1280px;
+
+// カラー
+$colorTheme: #2ECC71;
+$colorBase: #15202B;
+$colorMain: #F1F1F1;
+$subColorBase: lighten($colorBase,5%);
+
+//ヘッダー、ドロワー設定
+$drawerWidth:180px;
+$drawerBg:desaturate(lighten($colorBase, 3%),10%);
+$headerHeight:48px;
+$headerBg:rgba($drawerBg,.8);
+
+//線の色
+$borderColor:rgba($K50,.5);
+
+//テキストフィールドの背景色
+$textFieldBg: rgba(128,128,128,.4);
+
+
+//font
+//ルートのフォントサイズ(px)
+$rootFont:14;
+
+// 行間
+$lineHeight: 1.5;
+
+// ★フォント設定
+@mixin fontSize($fontSize:14){
+  font-size:(#{$fontSize / $rootFont}rem); //rem = 設定したいsize / 基本のsize
+}
+
+//レスポンシブ設定
+$breakpoints: (
+  'se': 'screen and (max-width: 320px)',
+  'sp': 'screen and (max-width: 375px)',
+  'tb': 'screen and (min-width: 375px)',
+  'pc': 'screen and (min-width: 768px)',
+  'max':'screen and (min-width: 1280px)',
+) !default;
+
+@mixin mq($breakpoint: sp) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+// ブレイクポイントごとの調整
+// フォントサイズ
+@mixin adjustFontSize($spSize,$tbSize,$pcSize,$bigSize:$pcSize){
+  font-size: (#{$spSize / $rootFont}rem);
+  @include mq(tb){
+    font-size: (#{$tbSize / $rootFont}rem);
+  }
+  @include mq(pc){
+    font-size: (#{$pcSize / $rootFont}rem);
+  }
+  @media screen and (min-width: 900px){
+    font-size: (#{$bigSize / $rootFont}rem);
+  }
+}

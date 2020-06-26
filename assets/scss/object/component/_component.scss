@@ -1,0 +1,291 @@
+//★★★★★★★★★★★★★★★★★★
+//Component レイヤー ： メイン
+//パーツ、モジュール群
+//★★★★★★★★★★★★★★★★★★
+
+@import "./variable/_structure";
+@import "./variable/_theme";
+
+// ★見出し ★★★★★★★★★★★★★★★★★★
+h1.c-contentsHL{
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 400;
+  margin-bottom: 30px;
+  @include mq(tb){
+    font-size: 2.75rem;
+  }
+  @include mq(pc){
+    font-size: 3.75rem;
+  }
+  & + .c-contentsHL__lead{
+    margin-bottom: 60px;
+    & > p{
+      margin-bottom: 10px;
+    }
+  }
+}
+
+h2.c-contentsHL{
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 20px;
+  @include mq(pc){
+    font-size: 2rem;
+  }
+  & + .c-contentsHL__lead{
+    margin-bottom: 40px;
+    & > p{
+      margin-bottom: 10px;
+    }
+  }
+}
+h3.c-contentsHL{
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom:10px;
+  @include mq(pc){
+    font-size: 1.5rem;
+  }
+}
+
+
+// ★リスト ★★★★★★★★★★★★★★★★★★
+.c-lists{
+  //基礎
+  & li{
+    padding-left: 16px;
+    padding-right: 16px;
+    border-bottom: 1px solid $borderColor;
+    &:first-child{
+      border-top: 1px solid $borderColor;
+    }
+  }
+  //リスト見出し
+  &__headline{
+    font-size: 0.8rem;
+    color: rgba($colorMain,.7);
+    padding: 5px 0;
+    display: block;
+  }
+  //テキストリスト
+  &__text{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    //定義リスト
+    &__headline{
+      font-size: .9rem;
+      color: rgba($colorMain,.7);
+    }
+  }
+  //リンクリスト
+  &__link{
+    &:hover{
+      background-color: rgba($colorTheme,.1);
+    }
+    &:active{
+      background-color: rgba($colorTheme,.3);
+    }
+    & a{
+      padding-top: 8px;
+      padding-bottom: 8px;
+      text-decoration: none;
+      display: block;
+      color: $colorMain;
+      position: relative;
+    }
+    &_arrow{
+      & a:before{
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 8px;
+        height: 8px;
+        border-top: 1.5px solid $colorMain;
+        border-right: 1.5px solid $colorMain;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+  }
+  //アコーディオン
+  &__accordion {
+    position: relative;
+    overflow: hidden;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    & input[type=checkbox]  {
+      position: absolute;
+      z-index: -1;
+      opacity: 0;
+      &:checked{
+        & + label .c-lists__accordion__icon{
+          &::before {
+            display: none;
+          }
+          &::after {
+            transform: rotate(180deg);
+          }
+        }
+        & ~ .c-lists__accordion__content {
+          max-height: 20em;
+        }
+      }
+    }
+    & label {
+      display: block;
+      cursor: pointer;
+    }
+    &__icon {
+      position: relative;
+      top: 2px;
+      width: 10px;
+      height: 10px;
+      float: right;
+      &::before,&::after{
+        content:"";
+        transition: all .4s;
+        position: absolute;
+        right: 0;
+        width: 100%;
+        height: 1.5px;
+        background-color: $colorMain;
+        border-radius: 1px;
+      }
+      &::before{
+        top: 9px;
+        transform: rotate(0deg);
+      }
+      &::after{
+        top: 9px;
+        transform: rotate(90deg);
+      }
+    }
+    &__content {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height .4s;
+      & p,ul{
+        padding: 10px 0;
+      }
+    }
+  }
+  //ネストリスト
+  &__nest{
+    position: relative;
+    overflow: hidden;
+    border: none!important;
+    font-size: 0.9rem;
+    & a{
+      padding-top: 4px;
+      padding-bottom: 4px;
+      color: $colorMain;
+      display: block;
+      &:hover{
+        text-decoration: none;
+      }
+    }
+    &::before{
+      content: '';
+      display: block;
+      position: absolute;
+      width: 6px;
+      height: 1px;
+      background-color: $K50;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+    &:hover{
+      opacity: 1;
+      background-color: rgba($colorTheme,.1);
+    }
+    &:active{
+      background-color: rgba($colorTheme,.3);
+    }
+  }
+  //disc
+  &__disc{
+    position: relative;
+    border: none!important;
+    &::before{
+      content: '';
+      display: block;
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 2px;
+      background-color: $K50;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+}
+
+// ★水平線 ★★★★★★★★★★★★★★★★★★
+
+hr{
+  border-width: 1px 0 0;
+  border-color: rgba($colorMain,.5);
+}
+
+// ★カード ★★★★★★★★★★★★★★★★★★
+
+
+a.c-card{
+  cursor:pointer;
+  &:hover{
+    text-decoration: none;
+    background-color: lighten($subColorBase,8%);
+    box-shadow: 0 1px 3px 1px rgba($K100, 0.2), 0 2px 8px 4px rgba($K100, 0.1);
+  }
+  &:active{
+    background-color: lighten($subColorBase,10%);
+  }
+}
+
+.c-card{
+  min-width: 10px;
+  overflow: hidden;
+  border-radius: 2px;
+  background-color: $subColorBase;
+  color: $colorMain;
+  box-shadow: 0 1px 1px 0 rgba($K100, 0.08), 0 1px 3px 1px rgba($K100, 0.16);
+}
+
+
+// ★フォーム ★★★★★★★★★★★★★★★★★★
+
+.c-textField{
+  width: 100%;
+  padding: 8px 16px;
+  background-color: $textFieldBg !important;
+  color: $colorMain;
+  border: none;
+  border-radius: 3px;
+  line-height: 2rem;
+  &_small{
+    padding: 0px 16px;
+  }
+  &_search{
+    background: url(~assets/images/icon/form-search.svg) no-repeat 12px center;
+    background-size: 20px 20px;
+    padding-left: 40px;
+  }
+  &_mail{
+    background: url(~assets/images/icon/form-mail.svg) no-repeat 12px center;
+    background-size: 20px 20px;
+    padding-left: 40px;
+  }
+  &_key{
+    background: url(~assets/images/icon/form-key.svg) no-repeat 12px center;
+    background-size: 20px 20px;
+    padding-left: 40px;
+  }
+}
