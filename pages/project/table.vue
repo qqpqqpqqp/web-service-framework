@@ -12,34 +12,34 @@
             h3.c-contentsHL 縦並べ(レスポンシブ)
             .l-container
               .p-table
-                dl.l-column(v-for="n in 3")
-                  dt.l-column__column_1-1-4 X行×４列の例
-                  dd.l-column__column_1-3-4 1→3→4
-                  dd.l-column__column_1-3-4 1→3→4
-                  dd.l-column__column_1-3-4 1→3→4
+                dl.p-table__body.l-column(v-for="n in 3")
+                  dt.p-table__title.l-column__column_1-1-4 X行×４列の例
+                  dd.p-table__description.l-column__column_1-3-4 1→3→4
+                  dd.p-table__description.l-column__column_1-3-4 1→3→4
+                  dd.p-table__description.l-column__column_1-3-4 1→3→4
             .l-container
               pre.c-card.p20
                 code
                     |.p-table
-                    |    dl.l-column
-                    |      dt.l-column__column_1-1-4 X行×４列の例
-                    |      dd.l-column__column_1-3-4 1→3→4
-                    |      dd.l-column__column_1-3-4 1→3→4
-                    |      dd.l-column__column_1-3-4 1→3→4
+                    |    dl.p-table__body.l-column
+                    |      dt.p-table__title.l-column__column_1-1-4 X行×４列の例
+                    |      dd.p-table__description.l-column__column_1-3-4 1→3→4
+                    |      dd.p-table__description.l-column__column_1-3-4 1→3→4
+                    |      dd.p-table__description.l-column__column_1-3-4 1→3→4
             .l-container
               .p-table
-                dl.l-column(v-for="n in 3")
-                  dt.l-column__column_1-3-3 X行×４列の例
-                  dd.l-column__column_1-3-3 1→3→3
-                  dd.l-column__column_1-3-3 1→3→3
+                dl.p-table__body.l-column(v-for="n in 3")
+                  dt.p-table__title.l-column__column_1-3-3 X行×４列の例
+                  dd.p-table__description.l-column__column_1-3-3 1→3→3
+                  dd.p-table__description.l-column__column_1-3-3 1→3→3
             .l-container
               pre.c-card.p20
                 code
                     |.p-table
-                    |    dl.l-column
-                    |      dt.l-column__column_1-3-3 X行×４列の例
-                    |      dd.l-column__column_1-3-3 1→3→3
-                    |      dd.l-column__column_1-3-3 1→3→3
+                    |    dl.p-table__body.l-column
+                    |      dt.p-table__title.l-column__column_1-3-3 X行×４列の例
+                    |      dd.p-table__description.l-column__column_1-3-3 1→3→3
+                    |      dd.p-table__description.l-column__column_1-3-3 1→3→3
         section.l-section
           h2.c-contentsHL テーブル
           .l-container

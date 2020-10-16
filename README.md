@@ -1,3 +1,7 @@
+# web-service-framework
+
+WEBプロダクトを作成する際のJS/CSSフレームワークです。基礎的なUIコンポーネントが用意されており、より簡易的にスタート出来ます。
+
 ## 起動方法
 
 ```bash
@@ -50,7 +54,7 @@ $ npm install @nuxtjs/html-minifier
 ```
 
 
-## 不足パッケージの(オプション)
+## 不足パッケージのインストール(オプション)
 
 ### GraphQLの環境構築
 

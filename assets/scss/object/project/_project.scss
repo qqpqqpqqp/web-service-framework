@@ -62,40 +62,40 @@
   &_borderless{
     border-style: none;
   }
-  & dl{
+  &__body{
     border-right: 1px solid $borderColor;
     border-bottom: 1px solid $borderColor;
-    & dt{
-      font-weight: 600;
-      border-bottom: 1px solid $borderColor;
-      background-color: $subColorBase;
-      @include mq(tb){
-        &[class*="-3-"]{
-          border-bottom-style: none;
-        }
-      }
-      @include mq(pc){
+  }
+  &__title{
+    font-weight: 600;
+    border-bottom: 1px solid $borderColor;
+    background-color: $subColorBase;
+    @include mq(tb){
+      &[class*="-3-"]{
         border-bottom-style: none;
-        border-right: 1px solid $borderColor;
       }
     }
-    & dd{
-      border-right-style: none;
-      border-bottom: 1px solid $borderColor;
-      @include mq(tb){
-        border-bottom-style: none;
-        border-right: 1px solid $borderColor;
-      }
-      @include mq(pc){
-      }
-      &:last-child{
-        border-right-style: none !important;
-        border-bottom-style: none !important;
-      }
+    @include mq(pc){
+      border-bottom-style: none;
+      border-right: 1px solid $borderColor;
     }
-    & dt,& dd{
-      padding: 10px;
+  }
+  &__description{
+    border-right-style: none;
+    border-bottom: 1px solid $borderColor;
+    @include mq(tb){
+      border-bottom-style: none;
+      border-right: 1px solid $borderColor;
     }
+    @include mq(pc){
+    }
+    &:last-child{
+      border-right-style: none !important;
+      border-bottom-style: none !important;
+    }
+  }
+  & dt,& dd{
+    padding: 10px;
   }
 }
 table.p-table{
